@@ -1,0 +1,15 @@
+[Unit]
+Description=raspberry pi based reef tank controller
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/reef-pi daemon -config /etc/reef-pi/config.yaml
+WorkingDirectory=/var/lib/reef-pi
+Restart=always
+RestartSec=90
+StartLimitInterval=400
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,381 @@
+Key,Translation
+action,Aktion
+add,Hinzufügen
+alerts,Warnungen
+analog_input,analoger Eingang
+analog_inputs,analoge Eingänge
+apply,Übernehmen
+are_you_sure,Bist du sicher?
+ato,ATO
+cancel,Abbrechen
+capabilities,Funktionen
+charts,Diagramme
+clear,Löschen
+columns,Spalten
+configure,Konfigurieren
+delete,Löschen
+devmode_warning,
+disabled,aus
+documentation,Dokumentation (engl.)
+done,Fertig
+doser,Dosierpumpe
+driver,Treiber
+edit,Ändern
+enabled,ein
+end_time,Ende
+equipment,Gerät
+errors,Fehler
+full_moon,Vollmond
+health,Auslastung
+height,Höhe
+in-use,in Benutzung
+inlet,Eingang
+inlets,digitale Eingänge
+install,Installieren
+jack,analoger Ausgang (PWM)
+jacks,analoge Ausgänge (PWM)
+journal,Notizen
+light,Lampe
+lights,Beleuchtung
+loading,Lade ...
+maximum,Maximum
+minimum,Minimum
+name,Name
+no,Nein
+none,-keine-
+off,Aus
+ok,Ok
+on,Ein
+one_shot,nur einmal ausführen
+optional,optional
+outlet,Ausgang
+outlets,digitale Ausgänge
+pin,Pin
+pins,Pins
+profile,Profil
+reset,Verlauf löschen
+reverse,Invers
+rows,Zeilen
+running,Version
+save,Speichern
+save_successful,Speichern erfolgreich
+schedule,Zeitplan
+sec,s
+second_s,Sekunden
+select,auswählen
+select_file,-Datei wählen-
+since,seit
+start_time,Beginn
+status,Status
+stayoffonboot,Bei Neustart ausschalten
+update,Übernehmen
+upgrade_reef_pi,Aktualisiere reef-pi auf Version
+width,Breite
+yes,Ja
+ato:alert_after,Alarm nach Laufzeit von
+ato:ato_usage,ATO Nutzung
+ato:chk_freq,Prüfintervall
+ato:control,Funktion
+ato:control_target,Steuerung durch
+ato:controlequipment,Gerät schalten
+ato:controlmacro,Makro ausführen
+ato:controlnothing,-keine Steuerung-
+ato:disable_on_alert,ATO nach Alarm ausschalten
+ato:reset_usage,Verlauf löschen
+ato:title_delete,{{name}} löschen?
+ato:total_seconds_pump_on,gesamte Laufzeit der Pumpe
+ato:warn_delete,Wollen Sie ATO {{name}} wirklich löschen?
+ato:warn_reset,Wollen Sie den Verlauf von {{name}} wirklich löschen?
+camera:capture_flags,Aufnahmeoptionen
+camera:enable,Aktiv
+camera:take_photo,Aufnahme!
+camera:target_dir,Zielverzeichnis
+camera:tick_interval,Aufnahmeintervall (min)
+camera:tick_must_be_positive,Das Intervall muss eine Zahl größer gleich 1 sein!
+camera:to_gdrive,nach Google Drive kopieren
+capabilities:ato,ATO/Pegel
+capabilities:camera,Kamera
+capabilities:configuration,Konfiguration
+capabilities:dashboard,Übersicht
+capabilities:dev_mode,Entwickler-Modus
+capabilities:doser,Dosierpumpe
+capabilities:dosing_pumps,Dosierer
+capabilities:equipment,Geräte
+capabilities:health_check,Auslastung
+capabilities:journal,Notizen
+capabilities:lighting,Beleuchtung
+capabilities:lights,Beleuchtung
+capabilities:log,Protokoll
+capabilities:macro,Makro
+capabilities:macros,Makros
+capabilities:manager,Instanzen
+capabilities:ph,pH
+capabilities:phprobes,Sonden (pH)
+capabilities:system,System
+capabilities:temperature,Temperaturen
+capabilities:timers,Schaltuhren
+collapsible:delete,Löschen
+collapsible:edit,Ändern
+color_picker:choose,Auswählen
+configuration:about:current_time,aktuelle Uhrzeit
+configuration:about:modifications,Änderungen
+configuration:about:status,Status
+configuration:about:uptime,Letzter Neustart
+configuration:about:version,Version
+configuration:about:website,Web Site
+configuration:admin:db_export,DB Exportieren
+configuration:admin:db_import,DB Importieren
+configuration:admin:poweroff,Ausschalten
+configuration:admin:reboot,Neustart
+configuration:admin:reload,Neu laden
+configuration:admin:sign_out,Abmelden
+configuration:authentication:credentials,Benutzer
+configuration:authentication:error_pass,falsches Passwort
+configuration:authentication:error_user,falscher Benutzername
+configuration:connectors:title_delete,{{name}} löschen?
+configuration:connectors:warn_delete,Wollen Sie den Anschluss {{name}} wirklich löschen?
+configuration:drivers:title_delete,{{name}} entfernen?
+configuration:drivers:type,Typ
+configuration:drivers:warn_delete,Wollen Sie den Treiber für {{name}} wirklich entfernen?
+configuration:settings:address,Protokoll / IP-Adresse und Port
+configuration:settings:alert_health_check,Überlastwarnung
+configuration:settings:brightness,Brightness
+configuration:settings:capabilities,Funktionen
+configuration:settings:cors,cors
+configuration:settings:display,Display
+configuration:settings:interface,Netzwerkinterface
+configuration:settings:max_cpu,CPU Nutzung % größer
+configuration:settings:max_memory,Speicherbelegung MB größer
+configuration:settings:name,Netzwerkname
+configuration:settings:network_address_required,Eine Netzwerkadresse wird benötigt!
+configuration:settings:network_interface_required,Eine Netzwerk-Schnittstelle wird benötigt!
+configuration:settings:notification,Email-Benachrichtigung
+configuration:settings:pprof,Profiling
+configuration:settings:prometheus,Prometheus
+configuration:settings:rpi_pwm_freq,PWM Fequenz (RPi)
+configuration:settings:use_https,Verwende HTTPS
+configuration:tab:about,Über ...
+configuration:tab:admin,Administration
+configuration:tab:authentication,Anmeldung
+configuration:tab:connectors,Anschlüsse
+configuration:tab:drivers,Treiber
+configuration:tab:errors,Fehler
+configuration:tab:settings,Einstellungen
+configuration:tab:telemetry,Telemetrie
+cron:day_of_month,Kalendertag
+cron:hour,Stunde
+cron:minute,Minute
+cron:month,Monat
+cron:second,Sekunde
+cron:week,Wochentag (0=So - 6=Sa)
+dashboard:back_to_dashboard,zurück zur Übersicht
+dashboard:blank_panel,-leer-
+doser:calibrate,Kalibrieren
+doser:calibration:run,Start
+doser:delay,
+doser:direction,
+doser:direction_pin,
+doser:doser_usage,Pumpennutzung
+doser:duration,Dauer
+doser:microstep:1/16,
+doser:microstep:1/2,
+doser:microstep:1/32,
+doser:microstep:1/4,
+doser:microstep:1/8,
+doser:microstep:full,
+doser:microstepping,
+doser:ms_pin_a,
+doser:ms_pin_b,
+doser:ms_pin_c,
+doser:speed,Geschwindigkeit
+doser:spr,
+doser:step_pin,
+doser:title_delete,{{name}} löschen?
+doser:type,
+doser:volume,
+doser:vpr,
+doser:warn_delete,Wollen Sie die Dosierpumpe {{name}} wirklich löschen?
+doser:warn_reset,Wollen Sie den Verlauf von {{name}} wirklich löschen?
+equipment:chart:barchart,Geräte (Balken)
+equipment:chart:ctrlpanel,Geräte (Schalter)
+equipment:title_delete,{{name}} löschen?
+equipment:warn_delete,Wollen Sie das Gerät {{name}} wirklich löschen?
+fatal_error:connection_lost,Verbindung verloren
+fatal_error:fatal_error,Fataler Fehler
+fatal_error:message,Es ist ein Fehler aufgetreten. Der Server ist nicht erreichbar. Möglicherweise muss der Web-Server neu gestartet oder ein anderer Fehler gesucht werden.
+fatal_error:troubleshoot,Fehlersuche
+function:alert,Alarm
+function:ato,ATO (Pegel)
+function:camera,Kamera
+function:doser,Dosierpumpe
+function:equipment,Gerät
+function:lightings,Lampe
+function:macro,Makro
+function:phprobes,pH Sonde
+function:reminder,Email-Erinnerung
+function:subsystem,Funktionsgruppe
+function:temperature,Temperatur
+function:timers,Schaltuhr
+function:wait,Pause
+health_chart:cpu_memory,CPU / Speicher
+health_chart:current,aktuell
+health_chart:historical,Verlauf
+instances:warn_delete,Wollen Sie die Instanz {{name}} wirklich löschen?
+journal:add_entry,Neuer Eintrag
+journal:comment,Kommentar
+journal:description,Beschreibung
+journal:timestamp,Datum
+journal:title_delete,Notiz {{name}} löschen?
+journal:unit,Einheit
+journal:value,Messwert
+journal:warn_delete,Wollen Sie den Eintrag {{name}} wirklich löschen?
+language:de,Deutsch
+language:en,English
+language:es,Español
+language:fa,فارسی
+language:fr,Français
+language:hi,हिन्दी
+language:it,Italiano
+language:language,Sprache
+language:nl,Nederlands
+language:pt,Portuguesa
+language:zh,中文
+lighting:add_point,Neuer Punkt
+lighting:change_mode,Modus ändern
+lighting:channel_name,Kanalname
+lighting:chart_color,Diagrammfarbe
+lighting:mode_auto,Auto
+lighting:mode_manual,Manuell
+lighting:mode_mixed,Mix
+lighting:remove,Entfernen
+lighting:title_delete,Beleuchtung {{name}} löschen?
+lighting:warn_change,Wollen Sie '{{name}}' vom Modus {{oldmode}} auf {{newmode}} umschalten?
+lighting:warn_delete,Wollen Sie die Beleuchtung {{name}} wirklich löschen?
+log:content,Beschreibung
+log:emitter,Sender
+log:time,Zeit
+log:type,Typ
+macro:action,Aktion
+macro:alert:message,Nachricht
+macro:alert:title,Titel
+macro:one_step_required,Mindestens ein Schritt ist erforderlich!
+macro:reversible,Umkehrbar
+macro:revert,Umgekehrt
+macro:reverting,Umkehr
+macro:run,Ausführen
+macro:running,Läuft
+macro:steps,Schritte
+macro:system,System
+macro:title_delete,{{name}} löschen?
+macro:turn_off,Ausschalten
+macro:turn_on,Einschalten
+macro:wait:duration,Dauer
+macro:warn_delete,Wollen Sie das Makro {{name}} wirklich löschen?
+ph:alert_above,obere Warnschwelle
+ph:alert_below,untere Warnschwelle
+ph:calibrate,Kalibrieren
+ph:chart:current,pH (aktuell)
+ph:chart:historical,pH (Verlauf)
+ph:chart:usage,pH (Verl.& Nutzung)
+ph:chart_color,Diagrammfarbe
+ph:chart_unit,Diagrammeinheit
+ph:chart_ymax,Achsenmaximum
+ph:chart_ymin,Achsenminimum
+ph:check_frequency,Messintervall
+ph:control,Funktion
+ph:controlequipment,Gerät schalten
+ph:controlmacro,Makro ausführen
+ph:controlnothing,-keine Steuerung-
+ph:current_reading,aktueller Wert
+ph:hysteresis,Hysterese
+ph:hysteresis_less_than,Die Hysterese muss kleiner als der Abstand der Schwellwerte sein!
+ph:lower_function,pH senken
+ph:lower_threshold,unterer Schwellwert
+ph:midpoint,Mittenwert
+ph:run_calibration,Kalibrieren
+ph:second_point,zweiter Messpunkt
+ph:transformer,
+ph:upper_function,pH anheben
+ph:upper_threshold,oberer Schwellwert
+ph:warn_delete,Wollen Sie die Sonde {{name}} wirklich löschen?
+ph:warn_reset,Wollen Sie den Verlauf von {{name}} wirklich löschen?
+signin:invalidcredentials,Anmeldefehler!
+signin:password,Passwort
+signin:signin,Anmelden
+signin:username,Name
+telemetry:main:current-limit,Einträge im Diagr. 'aktuell' (1/min)
+telemetry:main:email-alerts,Email Alarme
+telemetry:main:historical-limit,Einträge im Diagr. 'Verlauf' (1/h)
+telemetry:main:limit-per-hour,max. Nachrichten pro Std.
+telemetry:main:send-test-message,Sende Testnachricht
+telemetry:notification:from,Absender
+telemetry:notification:password,Passwort
+telemetry:notification:port,Port
+telemetry:notification:server,Email-Server (Versand)
+telemetry:notification:to,Empfänger
+telemetry:notification:username,Emailkonto
+temperature:alert_above,obere Warnschwelle
+temperature:alert_below,untere Warnschwelle
+temperature:calibrate,Kalibrieren
+temperature:calibration:apply,Übernehmen
+temperature:calibration:set_temperature,korr. Messwert
+temperature:celsius,Celsius
+temperature:chart:current,Temperatur (aktuell)
+temperature:chart:down,Kühler
+temperature:chart:historical,Temperatur (Verlauf)
+temperature:chart:up,Heizung
+temperature:chart_color,Diagrammfarbe
+temperature:chart_ymax,Achsenmaximum
+temperature:chart_ymin,Achsenminimum
+temperature:check_frequency,Messintervall
+temperature:control,Funktion
+temperature:controlequipment,Gerät schalten
+temperature:controlmacro,Makro ausführen
+temperature:controlnothing,-keine Steuerung-
+temperature:current_reading,Messwert
+temperature:fahrenheit,Fahrenheit
+temperature:heater_cooler,Heizung/Kühler
+temperature:hysteresis,Hysterese
+temperature:hysteresis_less_than,Die Hysterese muss kleiner als der Abstand der Schwellwerte sein!
+temperature:lower_function,Heizungssteuerung
+temperature:lower_threshold,unterer Schwellwert
+temperature:sensor,Sensor
+temperature:temperature,Temperatur
+temperature:unit,Einheit
+temperature:upper_function,Kühlungssteuerung
+temperature:upper_threshold,oberer Schwellwert
+temperature:warn_delete,Wollen Sie die Regelung {{name}} wirklich löschen?
+temperature:warn_reset,Wollen Sie den Verlauf von {{name}} wirklich löschen?
+timers:action,Aktion
+timers:after,... nach
+timers:and_then,... danach
+timers:duration,Dauer
+timers:function,Funktion
+timers:message,Nachricht
+timers:revert,Umgekehrt
+timers:sec,s
+timers:stay_off,aus lassen
+timers:stay_on,an lassen
+timers:subject,Betreff
+timers:title_delete,{{name}} löschen?
+timers:turn_back_off,wieder ausschalten
+timers:turn_back_on,wieder einschalten
+timers:turn_off,Ausschalten
+timers:turn_on,Einschalten
+timers:warn_delete,Wollen Sie die Schaltuhr {{name}} wirklich löschen?
+validation:a_must_be_greater_than_b,{{a}} muss größer als {{b}} sein!
+validation:a_must_be_less_than_b,{{a}} muss kleiner als {{b}} sein!
+validation:a_must_differ_from_b,{{a}} und {{b}} dürfen nicht gleich sein!
+validation:comma_separated_numbers,"Eine Liste von Zahlen, durch Komma getrennt"
+validation:cron_nojoker_required,"CRON: eine Zahl, ein Bereich (1-5), oder eine Liste (1,3,6) sind erlaubt."
+validation:cron_required,"CRON: eine Zahl, ein Bereich (1-5), eine Liste (1,3,6) oder * sind erlaubt."
+validation:date_required,Ein Datum ist erforderlich!
+validation:entry_required,Das Feld darf nicht leer sein!
+validation:error,Die Angaben sind unvollständig oder fehlerhaft!
+validation:integer_max_required,Das muss eine Zahl <= ${max} sein!
+validation:integer_min_required,Das muss eine Zahl >= ${min} sein!
+validation:last_full_moon_required,Das Datum des letzten Vollmonds ist erforderlich!
+validation:name_required,Ein Name ist erforderlich!
+validation:number_required,Das muss eine Zahl sein!
+validation:selection_required,Eine Auswahl ist erforderlich!
+validation:time_required,Eine Zeit im Format HH:mm:ss ist erforderlich!

@@ -1,0 +1,381 @@
+Key,Translation
+action,
+add,Toevoegen
+alerts,Meldingen
+analog_input,Analoge Ingang
+analog_inputs,Analoge Ingangen
+apply,
+are_you_sure,Ben je zeker?
+ato,ato
+cancel,Annuleren
+capabilities,
+charts,
+clear,Resetten
+columns,
+configure,Instellen
+delete,Verwijderen
+devmode_warning,
+disabled,Uitgeschakeld
+documentation,Documentatie
+done,Gereed
+doser,doseerder
+driver,Driver
+edit,Bewerken
+enabled,Ingeschakeld
+end_time,
+equipment,Apparatuur
+errors,Foutmeldingen
+full_moon,
+health,gezondheid
+height,
+in-use,In gebruik
+inlet,Ingang (inlet)
+inlets,Ingangen (inlets)
+install,
+jack,Ingang (jack)
+jacks,Ingangen (jacks)
+journal,
+light,Light
+lights,Lichten
+loading,Laden
+maximum,
+minimum,
+name,Naam
+no,
+none,Niets
+off,
+ok,Ok
+on,
+one_shot,Eenmalig
+optional,
+outlet,Uitgang
+outlets,Uitgangen
+pin,pin
+pins,Pins
+profile,
+reset,
+reverse,omkeren
+rows,
+running,Actief
+save,Opslaan
+save_successful,Opslaan succesvol
+schedule,
+sec,sec
+second_s,second(en)
+select,Selecteren
+select_file,
+since,Sinds
+start_time,
+status,Status
+stayoffonboot,
+update,Update
+upgrade_reef_pi,
+width,
+yes,
+ato:alert_after,Alarm Na
+ato:ato_usage,ATO Gebruik
+ato:chk_freq,Controleer Frequentie
+ato:control,
+ato:control_target,
+ato:controlequipment,Apparatuur
+ato:controlmacro,Macro
+ato:controlnothing,Niets
+ato:disable_on_alert,Uitschakelen bij alarm
+ato:reset_usage,
+ato:title_delete,
+ato:total_seconds_pump_on,Tijdsduur ATO pomp ingeschakeld in seconden
+ato:warn_delete,Deze actie verwijderd
+ato:warn_reset,
+camera:capture_flags,
+camera:enable,
+camera:take_photo,
+camera:target_dir,
+camera:tick_interval,
+camera:tick_must_be_positive,
+camera:to_gdrive,
+capabilities:ato,ATO
+capabilities:camera,Camera
+capabilities:configuration,Configuratie
+capabilities:dashboard,Dashboard
+capabilities:dev_mode,Dev Mode
+capabilities:doser,Doseerpomp
+capabilities:dosing_pumps,Doseerpompen
+capabilities:equipment,Apparatuur
+capabilities:health_check,Health check
+capabilities:journal,Dagboek
+capabilities:lighting,Belichting
+capabilities:lights,Lichten
+capabilities:log,Log
+capabilities:macro,Macro
+capabilities:macros,Macros
+capabilities:manager,Instances
+capabilities:ph,pH
+capabilities:phprobes,
+capabilities:system,
+capabilities:temperature,Temperatuur
+capabilities:timers,Timers
+collapsible:delete,Verwijderen
+collapsible:edit,Bewerken
+color_picker:choose,Kies
+configuration:about:current_time,Huidige tijd
+configuration:about:modifications,
+configuration:about:status,Status
+configuration:about:uptime,Uptime
+configuration:about:version,Versie
+configuration:about:website,Website
+configuration:admin:db_export,
+configuration:admin:db_import,
+configuration:admin:poweroff,Uitschakelen
+configuration:admin:reboot,Herstarten
+configuration:admin:reload,Herladen
+configuration:admin:sign_out,Log uit
+configuration:authentication:credentials,Aanmeldingsgegevens
+configuration:authentication:error_pass,Geef een passwoord in
+configuration:authentication:error_user,Geef een gebruikersnaam in
+configuration:connectors:title_delete,
+configuration:connectors:warn_delete,
+configuration:drivers:title_delete,
+configuration:drivers:type,
+configuration:drivers:warn_delete,
+configuration:settings:address,Adres
+configuration:settings:alert_health_check,Alarm bij health check
+configuration:settings:brightness,
+configuration:settings:capabilities,Opties
+configuration:settings:cors,cors inschakelen
+configuration:settings:display,Display
+configuration:settings:interface,Interface
+configuration:settings:max_cpu,Max CPU
+configuration:settings:max_memory,Max Geheugen
+configuration:settings:name,Naam
+configuration:settings:network_address_required,Netwerkadres is nodig
+configuration:settings:network_interface_required,Netwerkinterface is nodig
+configuration:settings:notification,Notificatie
+configuration:settings:pprof,Profiling inschakelen
+configuration:settings:prometheus,Prometheus inschakelen
+configuration:settings:rpi_pwm_freq,Rpi Pwm Frequencie
+configuration:settings:use_https,Gebruik HTTPS
+configuration:tab:about,Over
+configuration:tab:admin,Admin
+configuration:tab:authentication,Authenticatie
+configuration:tab:connectors,Connectors
+configuration:tab:drivers,Drivers
+configuration:tab:errors,Foutmeldingen
+configuration:tab:settings,Instellingen
+configuration:tab:telemetry,Monitoring
+cron:day_of_month,Dag van de maand
+cron:hour,Uur
+cron:minute,Minuut
+cron:month,Maand
+cron:second,Seconde
+cron:week,Week
+dashboard:back_to_dashboard,Terug naar dashboard
+dashboard:blank_panel,
+doser:calibrate,
+doser:calibration:run,
+doser:delay,
+doser:direction,
+doser:direction_pin,
+doser:doser_usage,
+doser:duration,
+doser:microstep:1/16,
+doser:microstep:1/2,
+doser:microstep:1/32,
+doser:microstep:1/4,
+doser:microstep:1/8,
+doser:microstep:full,
+doser:microstepping,
+doser:ms_pin_a,
+doser:ms_pin_b,
+doser:ms_pin_c,
+doser:speed,
+doser:spr,
+doser:step_pin,
+doser:title_delete,
+doser:type,
+doser:volume,
+doser:vpr,
+doser:warn_delete,
+doser:warn_reset,
+equipment:chart:barchart,
+equipment:chart:ctrlpanel,
+equipment:title_delete,
+equipment:warn_delete,
+fatal_error:connection_lost,Connectie verloren
+fatal_error:fatal_error,Fatale Fout
+fatal_error:message,"Er ging iets mis, de UI kan geen contact maken met de server. Probeer de webserver te herstarten of kijk de logs na."
+fatal_error:troubleshoot,Troubleshoot
+function:alert,
+function:ato,
+function:camera,
+function:doser,
+function:equipment,
+function:lightings,
+function:macro,
+function:phprobes,
+function:reminder,
+function:subsystem,
+function:temperature,
+function:timers,
+function:wait,
+health_chart:cpu_memory,CPU/Geheugen
+health_chart:current,
+health_chart:historical,
+instances:warn_delete,
+journal:add_entry,
+journal:comment,
+journal:description,
+journal:timestamp,
+journal:title_delete,
+journal:unit,Eenheid
+journal:value,
+journal:warn_delete,
+language:de,Deutsch
+language:en,English
+language:es,Español
+language:fa,فارسی
+language:fr,Français
+language:hi,हिन्दी
+language:it,Italiano
+language:language,Language
+language:nl,Nederlands
+language:pt,Portugees
+language:zh,Chinees
+lighting:add_point,
+lighting:change_mode,
+lighting:channel_name,
+lighting:chart_color,
+lighting:mode_auto,
+lighting:mode_manual,
+lighting:mode_mixed,
+lighting:remove,
+lighting:title_delete,
+lighting:warn_change,
+lighting:warn_delete,
+log:content,Content
+log:emitter,Emitter
+log:time,Tijd
+log:type,Type
+macro:action,
+macro:alert:message,
+macro:alert:title,
+macro:one_step_required,
+macro:reversible,
+macro:revert,
+macro:reverting,
+macro:run,
+macro:running,
+macro:steps,
+macro:system,
+macro:title_delete,
+macro:turn_off,Uitschakelen
+macro:turn_on,Inschakelen
+macro:wait:duration,
+macro:warn_delete,
+ph:alert_above,Alarm boven
+ph:alert_below,Alarm onder
+ph:calibrate,Calibreren
+ph:chart:current,huidig
+ph:chart:historical,historiek
+ph:chart:usage,
+ph:chart_color,
+ph:chart_unit,
+ph:chart_ymax,
+ph:chart_ymin,
+ph:check_frequency,Controleer frequentie
+ph:control,Bedien
+ph:controlequipment,Apparatuur
+ph:controlmacro,Macro
+ph:controlnothing,Niets
+ph:current_reading,Huidige meting
+ph:hysteresis,Hysteresis
+ph:hysteresis_less_than,
+ph:lower_function,Laagste functie
+ph:lower_threshold,Laagste drempelwaarde
+ph:midpoint,Middelpunt
+ph:run_calibration,Uitvoeren
+ph:second_point,Tweede punt
+ph:transformer,
+ph:upper_function,Hoogste Functie
+ph:upper_threshold,Hoogste drempelwaarde
+ph:warn_delete,Deze actie verwijderd
+ph:warn_reset,
+signin:invalidcredentials,Foutieve aanmeldingsgegevens
+signin:password,Passwoord
+signin:signin,Log in
+signin:username,Gebruikersnaam
+telemetry:main:current-limit,
+telemetry:main:email-alerts,
+telemetry:main:historical-limit,
+telemetry:main:limit-per-hour,
+telemetry:main:send-test-message,
+telemetry:notification:from,
+telemetry:notification:password,
+telemetry:notification:port,
+telemetry:notification:server,
+telemetry:notification:to,
+telemetry:notification:username,
+temperature:alert_above,Alarm boven
+temperature:alert_below,Alarm onder
+temperature:calibrate,Kalibreer
+temperature:calibration:apply,Bevestigen
+temperature:calibration:set_temperature,Overschrijf temperatuur
+temperature:celsius,Celsius
+temperature:chart:current,huidig
+temperature:chart:down,Koeling
+temperature:chart:historical,historiek
+temperature:chart:up,Verwarming
+temperature:chart_color,
+temperature:chart_ymax,
+temperature:chart_ymin,
+temperature:check_frequency,Controleer frequentie
+temperature:control,Bedien
+temperature:controlequipment,Apparatuur
+temperature:controlmacro,Macro
+temperature:controlnothing,Niets
+temperature:current_reading,Huidige uitlezing
+temperature:fahrenheit,Fahrenheit
+temperature:heater_cooler,Verwarming/Koeling
+temperature:hysteresis,Hysteresis
+temperature:hysteresis_less_than,Hysteresis kleiner dan de aanvaardbaar drempelwaarde
+temperature:lower_function,Verwarming
+temperature:lower_threshold,Verwarming drempelwaarde
+temperature:sensor,Sensor
+temperature:temperature,Temperatuur
+temperature:unit,Eenheid
+temperature:upper_function,Koeler
+temperature:upper_threshold,Koeler drempelwaarde
+temperature:warn_delete,Deze actie verwijderd
+temperature:warn_reset,
+timers:action,
+timers:after,Na
+timers:and_then,AEn Daarna
+timers:duration,
+timers:function,Functie
+timers:message,Bericht
+timers:revert,
+timers:sec,sec
+timers:stay_off,Uit blijven
+timers:stay_on,Aan blijven
+timers:subject,Onderwerp
+timers:title_delete,
+timers:turn_back_off,Terug uitschakelen
+timers:turn_back_on,Terug inschakelen
+timers:turn_off,Uitschakelen
+timers:turn_on,Inschakelen
+timers:warn_delete,
+validation:a_must_be_greater_than_b,
+validation:a_must_be_less_than_b,
+validation:a_must_differ_from_b,
+validation:comma_separated_numbers,
+validation:cron_nojoker_required,
+validation:cron_required,
+validation:date_required,
+validation:entry_required,
+validation:error,
+validation:integer_max_required,
+validation:integer_min_required,
+validation:last_full_moon_required,
+validation:name_required,
+validation:number_required,
+validation:selection_required,
+validation:time_required,

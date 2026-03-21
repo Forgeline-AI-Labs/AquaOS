@@ -1,0 +1,72 @@
+@import '~bootstrap/scss/bootstrap';
+@import './colors';
+@import './auth-page';
+@import './navbar';
+@import './sign-in';
+@import './dashboard';
+@import './grid';
+@import './alert';
+@import './fatal_error';
+
+
+.reef_pi_panel {
+  border-style: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bottom-bar {
+  border-top: solid 1px #CCC;
+}
+
+html {
+  font-family: 'Century Gothic', CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.body-panel {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 70px;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.conf-nav {
+  margin-bottom: 10px;
+}
+
+div.dropdown-menu {
+  z-index: 1031;
+}
+
+input[type=number].no-spinner::-webkit-inner-spin-button,
+input[type=number].no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.react-datepicker__input-container .form-control {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .body-panel {
+    margin-bottom: 85px;
+  }
+  .navHeaderCollapse.collapsing{
+    transition:none;
+    -webkit-transition:none;
+    -moz-transition:none;
+    overflow:visible;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .body-panel {
+    margin-bottom: 70px;
+  }
+}

@@ -1,0 +1,62 @@
+name: deb
+on:
+  workflow_call:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - x86
+          - pi0
+          - pi3
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.0
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '^1.20'
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: 'yarn'
+      - name: Install
+        run: yarn
+      - name: x86
+        if: matrix.target == 'x86'
+        run: make x86
+      - name: pi-zero
+        if: matrix.target == 'pi0'
+        run: make pi-zero
+      - name: pi
+        if: matrix.target == 'pi3'
+        run: make pi
+      - name: bundler
+        run: gem install bundler -v 2.4 --no-document
+      - name: fpm
+        run: bundle install
+      - name: pi_deb
+        if: matrix.target != 'x86'
+        run: make pi_deb
+      - name: x86_deb
+        if: matrix.target == 'x86'
+        run: make x86_deb
+      - name: Rename deb package
+        run: |
+          VERSION=$(git describe --always --tags)
+          mv reef-pi-${VERSION}.deb reef-pi-${VERSION}-${{ matrix.target }}.deb
+      - name: "Upload ${{ matrix.target }} deb package"
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}-debian-package
+          path: 'reef-pi-*.deb'
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,381 @@
+Key,Translation
+action,Action
+add,add
+alerts,Alerts
+analog_input,Analog Input
+analog_inputs,Analog Inputs
+apply, Apply
+are_you_sure,Are you sure?
+ato,ATO
+cancel,Cancel
+capabilities,Capabilities
+charts,Charts
+clear,Clear
+columns,Columns
+configure,Configure
+delete,Delete
+devmode_warning,In DevMode
+disabled,Disabled
+documentation,Documentation
+done,Done
+doser,Doser
+driver,Driver
+edit,Edit
+enabled,Enabled
+end_time,End Time
+equipment,Equipment
+errors,Errors
+full_moon,Full Moon
+health,Health
+height,Height
+in-use,in-use
+inlet,Inlet
+inlets,Inlets
+install,Install
+jack,Jack
+jacks,Jacks
+journal,Journal
+light,Light
+lights,Lights
+loading,Loading ...
+maximum,Maximum
+minimum,Minimum
+name,Name
+no,No
+none,None
+off,Off
+ok,Ok
+on,On
+one_shot,One Shot
+optional,Optional
+outlet,Outlet
+outlets,Outlets
+pin,Pin
+pins,Pins
+profile,Profile
+reset,Reset
+reverse,Reverse
+rows,Rows
+running,running
+save,Save
+save_successful,Save sucessful
+schedule,Schedule
+sec,second
+second_s,second(s)
+select,Select
+select_file,Please select a file
+since,since
+start_time,Start Time
+status,Status
+stayoffonboot,Stay Off On Boot?
+update,Update
+upgrade_reef_pi,Upgrade reef-pi to version
+width,Width
+yes,Yes
+ato:alert_after,Alert After
+ato:ato_usage,ATO Usage
+ato:chk_freq,Check Frequency
+ato:control,Control
+ato:control_target,Target
+ato:controlequipment,Equipment
+ato:controlmacro,Macro
+ato:controlnothing,Nothing
+ato:disable_on_alert,Disable on alert
+ato:reset_usage,Reset
+ato:title_delete,Delete {{name}} ?
+ato:total_seconds_pump_on,Total number of seconds ato pump is on
+ato:warn_delete,This action will delete ATO {{name}}
+ato:warn_reset,This action will reset usage data for ATO {{name}}
+camera:capture_flags,Capture flags
+camera:enable,Enable
+camera:take_photo,Take Photo!
+camera:target_dir,Image Directory
+camera:tick_interval,Tick Interval (in minutes)
+camera:tick_must_be_positive,Tick interval has to be a positive integer
+camera:to_gdrive,Upload to gDrive
+capabilities:ato,ATO
+capabilities:camera,Camera
+capabilities:configuration,Configuration
+capabilities:dashboard,Dashboard
+capabilities:dev_mode,Dev Mode
+capabilities:doser,Dosers
+capabilities:dosing_pumps,Dosers
+capabilities:equipment,Equipment
+capabilities:health_check,Health check
+capabilities:journal,Journal
+capabilities:lighting,Lighting
+capabilities:lights,Lights
+capabilities:log,Log
+capabilities:macro,Macro
+capabilities:macros,Macros
+capabilities:manager,Instances
+capabilities:ph,pH
+capabilities:phprobes,Probes (pH)
+capabilities:system,System
+capabilities:temperature,Temperatures
+capabilities:timers,Timers
+collapsible:delete,Delete
+collapsible:edit,Edit
+color_picker:choose,Choose
+configuration:about:current_time,Current time
+configuration:about:modifications,Modifications by
+configuration:about:status,Status
+configuration:about:uptime,Uptime
+configuration:about:version,Version
+configuration:about:website,Website
+configuration:admin:db_export,Download current database
+configuration:admin:db_import,Import database
+configuration:admin:poweroff,Power Off
+configuration:admin:reboot,Reboot
+configuration:admin:reload,Reload
+configuration:admin:sign_out,Sign Out
+configuration:authentication:credentials,Credentials
+configuration:authentication:error_pass,You Must Provide a password
+configuration:authentication:error_user,You Must Provide a username
+configuration:connectors:title_delete,Delete {{name}} ?
+configuration:connectors:warn_delete,This action will delete connector {{name}}
+configuration:drivers:title_delete,Remove driver {{name}}?
+configuration:drivers:type,Type
+configuration:drivers:warn_delete,This action will remove the driver for {{name}}
+configuration:settings:address,Address
+configuration:settings:alert_health_check,Alert on health check
+configuration:settings:brightness,Brightness
+configuration:settings:capabilities,Capabilities
+configuration:settings:cors,Enable cors
+configuration:settings:display,Display
+configuration:settings:interface,Interface
+configuration:settings:max_cpu,Max CPU
+configuration:settings:max_memory,Max memory
+configuration:settings:name,Name
+configuration:settings:network_address_required,Network address is required
+configuration:settings:network_interface_required,Network Interface is required
+configuration:settings:notification,Notification
+configuration:settings:pprof,Enable profiling
+configuration:settings:prometheus,Enable Prometheus
+configuration:settings:rpi_pwm_freq,Rpi Pwm Frequency
+configuration:settings:use_https,Use HTTPS
+configuration:tab:about,About
+configuration:tab:admin,Admin
+configuration:tab:authentication,Authentication
+configuration:tab:connectors,Connectors
+configuration:tab:drivers,Drivers
+configuration:tab:errors,Errors
+configuration:tab:settings,Settings
+configuration:tab:telemetry,Telemetry
+cron:day_of_month,Day of the month
+cron:hour,Hour
+cron:minute,Minute
+cron:month,Month
+cron:second,Second
+cron:week,Day of the week (0=Sun - 6=Sat)
+dashboard:back_to_dashboard,Back to dashboard
+dashboard:blank_panel,Unassigned (Blank)
+doser:calibrate,Calibrate
+doser:calibration:run,Run
+doser:delay,Delay
+doser:direction, Direction
+doser:direction_pin,Direction Pin
+doser:doser_usage,Pump Usage
+doser:duration,Duration
+doser:microstep:1/16,1/16
+doser:microstep:1/2,Half
+doser:microstep:1/32,1/32
+doser:microstep:1/4,1/4
+doser:microstep:1/8,1/8
+doser:microstep:full,Full
+doser:microstepping,Microstepping
+doser:ms_pin_a,MicroStepping Pin A
+doser:ms_pin_b,MicroStepping Pin B
+doser:ms_pin_c,MicroStepping Pin C 
+doser:speed,Speed
+doser:spr,Steps Per Rotation
+doser:step_pin,Step Pin
+doser:title_delete,Delete {{name}} ?
+doser:type,Type
+doser:volume,Volume
+doser:vpr,Volume Per Rotation
+doser:warn_delete,This action will delete doser {{name}}
+doser:warn_reset,This action will reset usage data for doser {{name}}
+equipment:chart:barchart,Equipment(Bar Chart)
+equipment:chart:ctrlpanel,Equipment(Switch Panel)
+equipment:title_delete,Delete {{name}} ?
+equipment:warn_delete,This action will delete equipment {{name}}
+fatal_error:connection_lost,Connection Lost
+fatal_error:fatal_error,Fatal Error
+fatal_error:message,Something went wrong and the UI cannot contact the server anymore. You may need to restart the webserver or do some troubleshooting.
+fatal_error:troubleshoot,Troubleshoot
+function:alert,alert
+function:ato,ATO
+function:camera,camera
+function:doser,doser
+function:equipment,equipment
+function:lightings,light
+function:macro,macro
+function:phprobes,pH probe
+function:reminder,email reminder
+function:subsystem,subsystem
+function:temperature,temperature
+function:timers,timer
+function:wait,wait
+health_chart:cpu_memory,CPU/Memory
+health_chart:current,current
+health_chart:historical,historical
+instances:warn_delete,This action will delete instance {{name}}
+journal:add_entry,Add entry
+journal:comment,Comment
+journal:description,Description
+journal:timestamp,Date
+journal:title_delete,Delete journal {{name}} ?
+journal:unit,Unit
+journal:value,Value
+journal:warn_delete,This action will delete journal entry {{name}}
+language:de,Deutsch
+language:en,English
+language:es,Español
+language:fa,فارسی
+language:fr,Français
+language:hi,हिन्दी
+language:it,Italiano
+language:language,Language
+language:nl,Nederlands
+language:pt,Portuguesa
+language:zh,中文
+lighting:add_point,Add point
+lighting:change_mode,Change Mode
+lighting:channel_name,Channel Name
+lighting:chart_color,Color
+lighting:mode_auto,Auto
+lighting:mode_manual,Manual
+lighting:mode_mixed,Mixed
+lighting:remove,Remove
+lighting:title_delete,Delete lighting {{name}} ?
+lighting:warn_change,This action will change {{name}} from mode {{oldmode}} to {{newmode}}.
+lighting:warn_delete,This action will delete lighting {{name}}
+log:content,Content
+log:emitter,Emitter
+log:time,Time
+log:type,Type
+macro:action,Action
+macro:alert:message,message
+macro:alert:title,title
+macro:one_step_required,At least one step is required!
+macro:reversible,Reversible
+macro:revert,Revert
+macro:reverting,Reverting
+macro:run,Run
+macro:running,Running
+macro:steps,Steps
+macro:system,System
+macro:title_delete,Delete {{name}} ?
+macro:turn_off,Turn Off
+macro:turn_on,Turn On
+macro:wait:duration,Duration
+macro:warn_delete,This action will delete macro {{name}}
+ph:alert_above,Alert Above
+ph:alert_below,Alert Below
+ph:calibrate,Calibrate
+ph:chart:current,pH (latest)
+ph:chart:historical,pH (historical)
+ph:chart:usage,pH (hist.& usage)
+ph:chart_color, Chart color
+ph:chart_unit, Chart unit
+ph:chart_ymax, Chart maximum
+ph:chart_ymin, Chart minimum
+ph:check_frequency,Check Frequency
+ph:control,Control
+ph:controlequipment,Equipment
+ph:controlmacro,Macro
+ph:controlnothing,Nothing
+ph:current_reading,Current Reading
+ph:hysteresis,Hysteresis
+ph:hysteresis_less_than,Hysteresis is less than acceptable threshold
+ph:lower_function,Raising mechanism
+ph:lower_threshold,Lower Threshold
+ph:midpoint,Midpoint
+ph:run_calibration,Run
+ph:second_point,Second Point
+ph:transformer,Transform function
+ph:upper_function, Lowering mechanism
+ph:upper_threshold,Upper Threshold
+ph:warn_delete,This action will delete probe {{name}}
+ph:warn_reset,This action will reset usage data for probe {{name}}
+signin:invalidcredentials,Invalid Credentials
+signin:password,Password
+signin:signin,Sign In
+signin:username,Username
+telemetry:main:current-limit,Current limit
+telemetry:main:email-alerts,Email alerts
+telemetry:main:historical-limit,Historical limit
+telemetry:main:limit-per-hour,Limit per hour
+telemetry:main:send-test-message,Send test message
+telemetry:notification:from,From
+telemetry:notification:password,Password
+telemetry:notification:port,Port
+telemetry:notification:server,Server
+telemetry:notification:to,To
+telemetry:notification:username,Username
+temperature:alert_above,Alert Above
+temperature:alert_below,Alert Below
+temperature:calibrate, Calibrate
+temperature:calibration:apply, Apply
+temperature:calibration:set_temperature, Set Temperature
+temperature:celsius,Celsius
+temperature:chart:current, Temperature(recent)
+temperature:chart:down,Cooler
+temperature:chart:historical,Temperature(historical)
+temperature:chart:up,Heater
+temperature:chart_color, Chart Color
+temperature:chart_ymax, Chart maximum
+temperature:chart_ymin, Chart minimum
+temperature:check_frequency,Check Frequency
+temperature:control, Control
+temperature:controlequipment, Equipment
+temperature:controlmacro, Macro
+temperature:controlnothing, Nothing
+temperature:current_reading, Current Reading
+temperature:fahrenheit,Fahrenheit
+temperature:heater_cooler,Heater/Cooler
+temperature:hysteresis,Hysteresis
+temperature:hysteresis_less_than, Hysteresis is less than acceptable threshold
+temperature:lower_function, Heater
+temperature:lower_threshold, Heater Threshold
+temperature:sensor,Sensor
+temperature:temperature,Temperature
+temperature:unit,Unit
+temperature:upper_function, Chiller
+temperature:upper_threshold, Chiller Threshold
+temperature:warn_delete,This action will delete controller {{name}}
+temperature:warn_reset,This action will reset usage data for {{name}}
+timers:action,Action
+timers:after,After
+timers:and_then,And Then
+timers:duration,Duration
+timers:function,Function
+timers:message,Message
+timers:revert,Revert
+timers:sec,sec
+timers:stay_off,Stay off
+timers:stay_on,Stay on
+timers:subject,Subject
+timers:title_delete,Delete {{name}} ?
+timers:turn_back_off,Turn back off
+timers:turn_back_on,Turn back on
+timers:turn_off,Turn Off
+timers:turn_on,Turn On
+timers:warn_delete,This action will delete timer {{name}}
+validation:a_must_be_greater_than_b,{{a}} must be greater than {{b}}
+validation:a_must_be_less_than_b,{{a}} must be less than {{b}}
+validation:a_must_differ_from_b,{{a}} and {{b}} must be different
+validation:comma_separated_numbers,Use only comma separated numbers
+validation:cron_nojoker_required,An integer or a range (e.g. 1-5) is required!
+validation:cron_required,"An integer, a range (e.g. 1-5) or * is required!"
+validation:date_required,A date is required!
+validation:entry_required,This may not be empty
+validation:error,The settings cannot be saved due to validation errors.  Please correct the errors and try again.
+validation:integer_max_required,An integer number <= ${max} is required!
+validation:integer_min_required,An integer number >= ${min} is required!
+validation:last_full_moon_required,The date of last full moon is required!
+validation:name_required,Name is required
+validation:number_required,A number is required
+validation:selection_required,Select one entry
+validation:time_required,Enter a time as HH:mm:ss

@@ -1,0 +1,5 @@
+display_rotate=2
+dtparam=i2c_arm=on
+dtparam=spi=on
+dtparam=audio=on
+enable_uart=1
