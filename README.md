@@ -6,7 +6,11 @@ See [VISION.md](./VISION.md) for architecture, roadmap, and design principles.
 
 ## Status
 
-🚧 Early development — Phase 0 (Fork & Understand)
+Early development — Phase 0 (Fork & Understand)
+
+## Building
+
+See [BUILDING.md](./BUILDING.md) for local build prerequisites and commands.
 
 ## License
 
