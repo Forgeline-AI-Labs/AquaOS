@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * AquaOS design-token bridge
+ *
+ * Runtime tokens are set as --aqua-* CSS custom properties by ThemeProvider.
+ * The @theme block below maps them into Tailwind v4 so utilities like
+ * `bg-background`, `text-primary`, `rounded-md`, etc. resolve to the
+ * active theme's values.
+ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* — Colors — */
+  --color-background: var(--aqua-color-background);
+  --color-foreground: var(--aqua-color-foreground);
+  --color-surface: var(--aqua-color-surface);
+  --color-surface-alt: var(--aqua-color-surface-alt);
+  --color-border: var(--aqua-color-border);
+  --color-border-subtle: var(--aqua-color-border-subtle);
+  --color-primary: var(--aqua-color-primary);
+  --color-primary-foreground: var(--aqua-color-primary-foreground);
+  --color-secondary: var(--aqua-color-secondary);
+  --color-secondary-foreground: var(--aqua-color-secondary-foreground);
+  --color-accent: var(--aqua-color-accent);
+  --color-accent-foreground: var(--aqua-color-accent-foreground);
+  --color-muted: var(--aqua-color-muted);
+  --color-muted-foreground: var(--aqua-color-muted-foreground);
+  --color-success: var(--aqua-color-success);
+  --color-warning: var(--aqua-color-warning);
+  --color-danger: var(--aqua-color-danger);
+
+  /* — Border radii — */
+  --radius-sm: var(--aqua-radius-sm);
+  --radius-md: var(--aqua-radius-md);
+  --radius-lg: var(--aqua-radius-lg);
+  --radius-full: var(--aqua-radius-full);
+
+  /* — Spacing — */
+  --spacing-xs: var(--aqua-space-xs);
+  --spacing-sm: var(--aqua-space-sm);
+  --spacing-md: var(--aqua-space-md);
+  --spacing-lg: var(--aqua-space-lg);
+  --spacing-xl: var(--aqua-space-xl);
+
+  /* — Fonts — */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--aqua-color-background);
+  color: var(--aqua-color-foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
