@@ -1,3 +1,463 @@
-# Api Reference
+# API Reference
 
-TODO: Add Api Reference documentation.
+Complete reference for the AquaOS (reef-pi) REST API. All endpoints under `/api/` require
+authentication via session cookie (obtained from `POST /auth/signin`). Request and response
+bodies are JSON unless noted otherwise.
+
+---
+
+## Authentication
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| POST | `/auth/signin` | `{ "user": string, "password": string }` | `200` (sets session cookie) or `401` | Sign in |
+| GET | `/auth/signout` | — | `200` (clears session cookie) | Sign out |
+
+---
+
+## System / Daemon
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/me` | — | `string` | Auth check / ping |
+| GET | `/api/info` | — | `{ name, ip, current_time, uptime, cpu_temperature, version, model }` | System summary |
+| GET | `/api/capabilities` | — | `{ dev_mode, dashboard, health_check, equipment, timers, lighting, temperature, ato, camera, doser, ph, macro, configuration, journal }` | Enabled capabilities |
+| GET | `/api/settings` | — | `Settings` (see below) | Get system settings |
+| POST | `/api/settings` | `Settings` | `200` | Update system settings |
+| POST | `/api/credentials` | `{ "user": string, "password": string }` | `200` | Update login credentials |
+| GET | `/api/dashboard` | — | `Dashboard` | Get dashboard layout |
+| POST | `/api/dashboard` | `Dashboard` | `200` | Update dashboard layout |
+| GET | `/api/health_stats` | — | `[ { cpu, memory, time, throttle } ]` | Health-check history |
+
+**Settings shape:**
+```json
+{
+  "name": "string",
+  "interface": "string",
+  "address": "string",
+  "display": "bool",
+  "notification": "bool",
+  "capabilities": { ... },
+  "health_check": { "enable": "bool", "max_cpu": "int", "max_memory": "int" },
+  "https": "bool",
+  "pprof": "bool",
+  "rpi_pwm_freq": "int",
+  "prometheus": "bool",
+  "cors": "bool"
+}
+```
+
+**Dashboard shape:**
+```json
+{
+  "column": "int",
+  "row": "int",
+  "width": "int",
+  "height": "int",
+  "grid_details": [ [ { "type": "string", "id": "string" } ] ]
+}
+```
+
+---
+
+## Errors
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/errors` | — | `[ Error ]` | List all logged errors |
+| GET | `/api/errors/{id}` | — | `Error` | Get error by ID |
+| DELETE | `/api/errors/{id}` | — | `200` | Delete an error |
+| DELETE | `/api/errors/clear` | — | `200` | Clear all errors |
+
+---
+
+## Telemetry
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/telemetry` | — | `TelemetryConfig` | Get telemetry configuration |
+| POST | `/api/telemetry` | `TelemetryConfig` | `200` | Update telemetry configuration |
+| POST | `/api/telemetry/test_message` | — | `200` | Send a test alert/notification |
+
+**TelemetryConfig shape:**
+```json
+{
+  "adafruitio": { "enable": "bool", "token": "string", "user": "string", "prefix": "string" },
+  "mqtt": { "enable": "bool", "server": "string", "topic": "string", "client_id": "string", "qos": "int", "retained": "bool", "username": "string", "password": "string" },
+  "mailer": { "server": "string", "port": "int", "from": "string", "password": "string", "to": ["string"] },
+  "notify": "bool",
+  "prometheus": "bool",
+  "throttle": "int",
+  "historical_limit": "int",
+  "current_limit": "int"
+}
+```
+
+---
+
+## Display & Admin
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/display` | — | `{ on: bool, brightness: int }` | Get display state |
+| POST | `/api/display` | `{ enable: bool, brightness: int }` | `200` | Set display config |
+| POST | `/api/display/on` | — | `200` | Turn display on |
+| POST | `/api/display/off` | — | `200` | Turn display off |
+| POST | `/api/admin/poweroff` | — | `200` | Power off the device |
+| POST | `/api/admin/reboot` | — | `200` | Reboot the device |
+| POST | `/api/admin/reload` | — | `200` | Reload/restart the service |
+| POST | `/api/admin/upgrade` | `{ "version": string }` | `200` | Upgrade to a specific version |
+| GET | `/api/admin/reef-pi.db` | — | Binary file download | Export the database |
+| POST | `/api/admin/reef-pi.db` | Multipart form (`dbImport` file field) | `200` | Import/upload a database |
+
+---
+
+## Drivers
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/drivers` | — | `[ Driver ]` | List all drivers |
+| GET | `/api/drivers/{id}` | — | `Driver` | Get driver by ID |
+| GET | `/api/drivers/options` | — | `{ [type]: [ DriverParam ] }` | List driver types and their config parameters |
+| PUT | `/api/drivers` | `Driver` | `200` | Create a driver |
+| POST | `/api/drivers/{id}` | `Driver` | `200` | Update a driver |
+| DELETE | `/api/drivers/{id}` | — | `200` | Delete a driver |
+| POST | `/api/drivers/validate` | `Driver` | `200` or `400` with `{ field: error }` | Validate driver config |
+
+**Driver shape:**
+```json
+{
+  "id": "string",
+  "name": "string",
+  "type": "string",
+  "config": { },
+  "pinmap": { },
+  "parameters": [ { "name": "string", "type": "string", "default": "..." } ]
+}
+```
+
+---
+
+## Outlets
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/outlets` | — | `[ Outlet ]` | List all outlets |
+| GET | `/api/outlets/{id}` | — | `Outlet` | Get outlet by ID |
+| PUT | `/api/outlets` | `Outlet` | `200` | Create an outlet |
+| POST | `/api/outlets/{id}` | `Outlet` | `200` | Update an outlet |
+| DELETE | `/api/outlets/{id}` | — | `200` | Delete an outlet |
+
+**Outlet shape:**
+```json
+{ "id": "string", "name": "string", "pin": "int", "equipment": "string", "reverse": "bool", "driver": "string" }
+```
+
+---
+
+## Inlets
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/inlets` | — | `[ Inlet ]` | List all inlets |
+| GET | `/api/inlets/{id}` | — | `Inlet` | Get inlet by ID |
+| PUT | `/api/inlets` | `Inlet` | `200` | Create an inlet |
+| POST | `/api/inlets/{id}` | `Inlet` | `200` | Update an inlet |
+| DELETE | `/api/inlets/{id}` | — | `200` | Delete an inlet |
+| POST | `/api/inlets/{id}/read` | — | `int` (0 or 1) | Read current digital value |
+
+**Inlet shape:**
+```json
+{ "id": "string", "name": "string", "pin": "int", "equipment": "string", "reverse": "bool", "driver": "string" }
+```
+
+---
+
+## Jacks
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/jacks` | — | `[ Jack ]` | List all jacks |
+| GET | `/api/jacks/{id}` | — | `Jack` | Get jack by ID |
+| PUT | `/api/jacks` | `Jack` | `200` | Create a jack |
+| POST | `/api/jacks/{id}` | `Jack` | `200` | Update a jack |
+| DELETE | `/api/jacks/{id}` | — | `200` | Delete a jack |
+| POST | `/api/jacks/{id}/control` | `{ [pin]: float64 }` (pin-to-value 0–100) | `200` | Set PWM values on jack pins |
+
+**Jack shape:**
+```json
+{ "id": "string", "name": "string", "pins": [ "int" ], "driver": "string", "reverse": "bool" }
+```
+
+---
+
+## Analog Inputs
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/analog_inputs` | — | `[ AnalogInput ]` | List all analog inputs |
+| GET | `/api/analog_inputs/{id}` | — | `AnalogInput` | Get analog input by ID |
+| PUT | `/api/analog_inputs` | `AnalogInput` | `200` | Create an analog input |
+| POST | `/api/analog_inputs/{id}` | `AnalogInput` | `200` | Update an analog input |
+| DELETE | `/api/analog_inputs/{id}` | — | `200` | Delete an analog input |
+| POST | `/api/analog_inputs/{id}/read` | — | `{ value: float64 }` | Read current analog value |
+
+**AnalogInput shape:**
+```json
+{ "id": "string", "name": "string", "pin": "int", "driver": "string" }
+```
+
+---
+
+## Equipment
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/equipment` | — | `[ Equipment ]` | List all equipment |
+| GET | `/api/equipment/{id}` | — | `Equipment` | Get equipment by ID |
+| PUT | `/api/equipment` | `Equipment` | `200` | Create equipment |
+| POST | `/api/equipment/{id}` | `Equipment` | `200` | Update equipment |
+| DELETE | `/api/equipment/{id}` | — | `200` | Delete equipment |
+| POST | `/api/equipment/{id}/control` | `{ "on": bool }` | `200` | Turn equipment on or off |
+
+**Equipment shape:**
+```json
+{ "id": "string", "name": "string", "outlet": "string", "on": "bool", "stay_off_on_boot": "bool" }
+```
+
+---
+
+## Timers
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/timers` | — | `[ Job ]` | List all timer jobs |
+| GET | `/api/timers/{id}` | — | `Job` | Get timer job by ID |
+| PUT | `/api/timers` | `Job` | `200` | Create a timer job |
+| POST | `/api/timers/{id}` | `Job` | `200` | Update a timer job |
+| DELETE | `/api/timers/{id}` | — | `200` | Delete a timer job |
+
+**Job shape:**
+```json
+{
+  "id": "string", "name": "string", "enable": "bool", "type": "string",
+  "month": "string", "week": "string", "day": "string",
+  "hour": "string", "minute": "string", "second": "string",
+  "target": { "id": "string", "on": "bool", "revert": "bool", "duration": "int", "type": "string" }
+}
+```
+
+---
+
+## Lighting
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/lights` | — | `[ Light ]` | List all lights |
+| GET | `/api/lights/{id}` | — | `Light` | Get light by ID |
+| PUT | `/api/lights` | `Light` | `200` | Create a light |
+| POST | `/api/lights/{id}` | `Light` | `200` | Update a light |
+| DELETE | `/api/lights/{id}` | — | `200` | Delete a light |
+| GET | `/api/lights/{id}/usage` | — | `StatsResponse` | Get light channel usage history |
+
+**Light shape:**
+```json
+{
+  "id": "string", "name": "string", "jack": "string", "enable": "bool",
+  "channels": { "[name]": { "pin": "int", "min": "int", "max": "int",
+    "start_min": "int", "color": "string",
+    "profile": { "type": "string", "config": { ... } },
+    "reverse": "bool" } }
+}
+```
+
+---
+
+## Temperature
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/tcs` | — | `[ TC ]` | List all temperature controllers |
+| GET | `/api/tcs/{id}` | — | `TC` | Get temperature controller by ID |
+| GET | `/api/tcs/sensors` | — | `[ string ]` | List detected 1-wire sensor IDs |
+| PUT | `/api/tcs` | `TC` | `200` | Create a temperature controller |
+| POST | `/api/tcs/{id}` | `TC` | `200` | Update a temperature controller |
+| DELETE | `/api/tcs/{id}` | — | `200` | Delete a temperature controller |
+| GET | `/api/tcs/{id}/usage` | — | `StatsResponse` | Get temperature reading history |
+| GET | `/api/tcs/{id}/current_reading` | — | `{ temperature: float64 }` | Get current cached reading |
+| GET | `/api/tcs/{id}/read` | — | `float64` | Read sensor now |
+| POST | `/api/tcs/{id}/calibrate` | `[ { expected: float64, observed: float64 } ]` | `200` | Calibrate temperature sensor |
+
+**TC shape:**
+```json
+{
+  "id": "string", "name": "string", "sensor": "string", "fahrenheit": "bool",
+  "min": "float64", "max": "float64", "hysteresis": "float64",
+  "heater": "string", "cooler": "string", "period": "int",
+  "control": "bool", "enable": "bool", "notify": { "enable": "bool", "min": "float64", "max": "float64" },
+  "is_macro": "bool", "one_shot": "bool",
+  "chart": { "ymin": "float64", "ymax": "float64", "color": "string", "unit": "string" }
+}
+```
+
+---
+
+## ATO (Auto Top-Off)
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/atos` | — | `[ ATO ]` | List all ATOs |
+| GET | `/api/atos/{id}` | — | `ATO` | Get ATO by ID |
+| PUT | `/api/atos` | `ATO` | `200` | Create an ATO |
+| POST | `/api/atos/{id}` | `ATO` | `200` | Update an ATO |
+| DELETE | `/api/atos/{id}` | — | `200` | Delete an ATO |
+| GET | `/api/atos/{id}/usage` | — | `StatsResponse` | Get ATO usage history |
+| POST | `/api/atos/{id}/reset` | — | `200` | Reset ATO (clear usage, restart) |
+
+**ATO shape:**
+```json
+{
+  "id": "string", "name": "string", "inlet": "string", "pump": "string",
+  "period": "int", "control": "bool", "enable": "bool",
+  "notify": { "enable": "bool", "max": "int" },
+  "is_macro": "bool", "disable_on_alert": "bool", "one_shot": "bool"
+}
+```
+
+---
+
+## pH Probes
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/phprobes` | — | `[ Probe ]` | List all pH probes |
+| GET | `/api/phprobes/{id}` | — | `Probe` | Get pH probe by ID |
+| PUT | `/api/phprobes` | `Probe` | `200` | Create a pH probe |
+| POST | `/api/phprobes/{id}` | `Probe` | `200` | Update a pH probe |
+| DELETE | `/api/phprobes/{id}` | — | `200` | Delete a pH probe |
+| GET | `/api/phprobes/{id}/readings` | — | `StatsResponse` | Get pH reading history |
+| GET | `/api/phprobes/{id}/read` | — | `float64` | Read current pH value |
+| POST | `/api/phprobes/{id}/calibrate` | `[ { expected: float64, observed: float64 } ]` | `200` | Multi-point calibration |
+| POST | `/api/phprobes/{id}/calibratepoint` | `{ type: string, expected: float64, observed: float64 }` | `200` | Single-point calibration step |
+
+**Probe shape:**
+```json
+{
+  "id": "string", "name": "string", "enable": "bool", "period": "int",
+  "analog_input": "string", "control": "bool",
+  "notify": { "enable": "bool", "min": "float64", "max": "float64" },
+  "upper_eq": "string", "downer_eq": "string",
+  "min": "float64", "max": "float64", "hysteresis": "float64",
+  "is_macro": "bool", "one_shot": "bool",
+  "chart": { "ymin": "float64", "ymax": "float64", "color": "string", "unit": "string" },
+  "transformer": { "a": "float64", "b": "float64" }
+}
+```
+
+---
+
+## Doser
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/doser/pumps` | — | `[ Pump ]` | List all dosing pumps |
+| GET | `/api/doser/pumps/{id}` | — | `Pump` | Get dosing pump by ID |
+| PUT | `/api/doser/pumps` | `Pump` | `200` | Create a dosing pump |
+| POST | `/api/doser/pumps/{id}` | `Pump` | `200` | Update a dosing pump |
+| DELETE | `/api/doser/pumps/{id}` | — | `200` | Delete a dosing pump |
+| GET | `/api/doser/pumps/{id}/usage` | — | `StatsResponse` | Get doser usage history |
+| POST | `/api/doser/pumps/{id}/calibrate` | `{ speed: int, duration: int, volume: float64 }` | `200` | Run calibration dose |
+| POST | `/api/doser/pumps/{id}/schedule` | `{ enable: bool, schedule: {...}, duration: int, speed: int, volume: float64 }` | `200` | Set dosing schedule |
+
+**Pump shape:**
+```json
+{
+  "id": "string", "name": "string", "jack": "string", "pin": "int",
+  "regiment": { "enable": "bool", "schedule": { ... }, "duration": "int", "speed": "int", "volume": "float64" },
+  "stepper": { ... }, "type": "string"
+}
+```
+
+---
+
+## Camera
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/camera/config` | — | `CameraConfig` | Get camera configuration |
+| POST | `/api/camera/config` | `CameraConfig` | `200` | Update camera configuration |
+| POST | `/api/camera/shoot` | — | `{ image: string }` | Capture a photo now |
+| GET | `/api/camera/latest` | — | `{ image: string }` | Get latest captured image |
+| GET | `/api/camera/list` | — | `[ string ]` | List captured image filenames |
+
+**CameraConfig shape:**
+```json
+{
+  "enable": "bool", "image_directory": "string",
+  "capture_flags": "string", "tick_interval": "int", "upload": "bool",
+  "motion": { "enable": "bool", "url": "string", "width": "int", "height": "int" }
+}
+```
+
+---
+
+## Macros
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/macros` | — | `[ Macro ]` | List all macros |
+| GET | `/api/macros/{id}` | — | `Macro` | Get macro by ID |
+| PUT | `/api/macros` | `Macro` | `200` | Create a macro |
+| POST | `/api/macros/{id}` | `Macro` | `200` | Update a macro |
+| DELETE | `/api/macros/{id}` | — | `200` | Delete a macro |
+| POST | `/api/macros/{id}/run` | — | `200` | Execute a macro |
+| POST | `/api/macros/{id}/revert` | — | `200` | Revert a macro (must be reversible) |
+
+**Macro shape:**
+```json
+{
+  "id": "string", "name": "string", "reversible": "bool",
+  "steps": [ { "type": "string", "config": { "id": "string", "on": "bool", "duration": "int" } } ]
+}
+```
+
+---
+
+## Journal
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/api/journal` | — | `[ Parameter ]` | List all journal parameters |
+| GET | `/api/journal/{id}` | — | `Parameter` | Get journal parameter by ID |
+| PUT | `/api/journal` | `Parameter` | `200` | Create a journal parameter |
+| POST | `/api/journal/{id}` | `Parameter` | `200` | Update a journal parameter |
+| DELETE | `/api/journal/{id}` | — | `200` | Delete a journal parameter |
+| POST | `/api/journal/{id}/record` | `{ value: float64, timestamp: string, comment: string }` | `200` | Record a journal entry |
+| GET | `/api/journal/{id}/usage` | — | `StatsResponse` | Get journal entry history |
+
+**Parameter shape:**
+```json
+{ "id": "string", "name": "string", "unit": "string", "description": "string" }
+```
+
+---
+
+## Prometheus Metrics
+
+| Method | Path | Request Body | Response | Purpose |
+|--------|------|-------------|----------|---------|
+| GET | `/x/metrics` | — | Prometheus text format | Scrape endpoint (requires `settings.prometheus: true`) |
+
+---
+
+## Debug / Profiling
+
+These endpoints are only available when `settings.pprof` is `true`.
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/debug/pprof/` | Go pprof index |
+| GET | `/debug/pprof/cmdline` | Process command line |
+| GET | `/debug/pprof/profile` | CPU profile |
+| GET | `/debug/pprof/symbol` | Symbol lookup |
+| GET | `/debug/pprof/trace` | Execution trace |

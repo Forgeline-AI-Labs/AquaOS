@@ -1,0 +1,113 @@
+# WebSocket Message Format
+
+> **Status: Not yet implemented.** AquaOS does not currently expose any WebSocket
+> endpoints. This page documents the current real-time communication architecture,
+> the planned WebSocket direction, and what exists in the codebase today.
+
+---
+
+## Current Real-Time Architecture
+
+AquaOS inherits its real-time strategy from the upstream reef-pi project. Today, **all
+client-server communication uses REST over HTTP** (see [API Reference](/api-reference)).
+Where the UI needs live-updating data it falls back to **polling**.
+
+### Polling Pattern
+
+The frontend uses `setInterval` to periodically re-fetch data from REST endpoints.
+The canonical example is the Macro status view:
+
+```js
+// backend/front-end/src/macro/main.jsx — lines 35-37
+// TODO: [ML] Consider Server Events, Long Polling, or Web Sockets after 2.0
+// Polling for macro status.
+const timer = window.setInterval(this.props.fetch, 10 * 1000)
+```
+
+- **Interval:** 10 seconds (hard-coded)
+- **Transport:** Standard `fetch()` calls via `reduxGet` / `reduxPost` helpers
+  (`backend/front-end/src/utils/ajax.js`)
+- **State management:** Redux — each poll dispatches an action that updates the store
+
+Other subsystem UIs (temperature, pH, ATO, lighting, etc.) follow the same fetch-on-mount
+pattern but do not all set up recurring polling intervals.
+
+### External Pub/Sub (MQTT)
+
+The backend can publish telemetry to an **MQTT broker** for consumption by external
+systems (Home Assistant, Node-RED, etc.). This is configured under
+`/api/telemetry` and implemented in `backend/controller/telemetry/mqtt.go`.
+MQTT is a server-to-broker push — it does **not** feed the web UI.
+
+---
+
+## WebSocket Endpoint
+
+**None.** No WebSocket upgrade handler, route, or connection manager exists in the
+backend Go code today.
+
+- `backend/controller/daemon/api.go` registers all HTTP routes — none perform a
+  WebSocket upgrade.
+- `gorilla/websocket v1.5.3` appears in `backend/go.mod` as an **indirect**
+  dependency (pulled in transitively). No Go source file imports it.
+
+---
+
+## Message Types / Events
+
+Because there is no WebSocket implementation, there are no defined message types,
+event names, or payload schemas for WebSocket communication.
+
+---
+
+## Connection & Authentication
+
+No WebSocket-specific authentication flow exists. The REST API uses session-cookie
+authentication (`POST /auth/signin` sets a cookie; subsequent `/api/*` requests
+must include it). A future WebSocket implementation would likely need to either:
+
+1. Reuse the session cookie during the HTTP upgrade handshake, or
+2. Accept a token as a query parameter or first-message payload.
+
+---
+
+## Planned Direction
+
+The codebase signals intent to add real-time push in a future release:
+
+| Signal | Location | Detail |
+|--------|----------|--------|
+| TODO comment | `backend/front-end/src/macro/main.jsx:35` | _"Consider Server Events, Long Polling, or Web Sockets after 2.0"_ |
+| Architecture vision | `VISION.md` | Lists **"Native WebSocket"** as the real-time layer between frontend and backend |
+| Library available | `backend/go.mod:37` | `gorilla/websocket v1.5.3` present as indirect dep — ready to promote to direct use |
+
+When implemented, likely candidate message groups (based on existing REST resources and
+polling patterns) include:
+
+| Candidate Event Group | Current REST Source | Why Real-Time Matters |
+|-----------------------|--------------------|-----------------------|
+| Sensor readings (temperature, pH) | `GET /api/tcs/{id}/current_reading`, `GET /api/phprobes/{id}/read` | Dashboard charts benefit from sub-second push |
+| Equipment state changes | `GET /api/equipment` | Immediate feedback when relays toggle |
+| Macro execution status | `GET /api/macros` | Progress/completion without 10 s polling lag |
+| ATO events | `GET /api/atos/{id}/usage` | Safety-critical — fast alerting on pump run-away |
+| Alert / error notifications | `GET /api/errors` | Push errors to UI as they occur |
+| Health-check stats | `GET /api/health_stats` | Live CPU/memory/throttle monitoring |
+
+These are projections based on architecture intent and current polling patterns — not
+committed designs.
+
+---
+
+## Gaps & Open Questions
+
+1. **No implementation exists** — all content above about future direction is inferred
+   from comments, `VISION.md`, and dependency presence, not from working code.
+2. **Protocol undecided** — the TODO comment lists three options (Server-Sent Events,
+   Long Polling, WebSocket). The architecture vision names WebSocket, but no final
+   decision is recorded.
+3. **Message schema undefined** — payload shapes, event naming conventions, and
+   subscription semantics have not been designed.
+4. **Authentication model TBD** — how session auth translates to a long-lived WebSocket
+   connection is unspecified.
+5. **Broadcast vs. subscribe** — whether clients receive all events or subscribe to
+   specific topics/resources is undecided.
